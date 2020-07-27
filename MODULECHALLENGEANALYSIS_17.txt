@@ -1,0 +1,51 @@
+Challenge 17 Analysis: Implementing Machine Learning Models to find accuracy and performance
+
+For this challenge, Jill has asked me to "use imbalanced-learn and scikit-learn libraries to build and evaluate models using resampling." I had to first split the data into Training and Testing which allowed me to find the different variables (X_train, X_test, y_train, y_test) shapes and the overall shape of each the y and X. Next, I used the "Balanced Random Forest Classifier" to "compare two ensemble algorithms to determine which algorithm results in the best performance." After naming my model brfc_MODEL, I was able to fit (X_train, y_train) into it and have both of those variable come out with only integers (I had issues from the getgo regarding the dtypes of some columns being objects instead of integers so i ahd to change them). My balanced accuracy score came out to 0.7885466545953005 or roughly ~ .79. In calculating Precision (Precision = TP/(TP + FP)), the TP was 71 and FP was 2153 and when calculated: Precision = 71/(71 + 2153)=0.03 for high-risk and 1.00 according to the chart I have included below:
+                  pre       rec       spe        f1       geo       iba       sup
+
+  high_risk       0.03      0.70      0.87      0.06      0.78      0.60       101
+   low_risk       1.00      0.87      0.70      0.93      0.78      0.62     17104
+
+avg / total       0.99      0.87      0.70      0.93      0.78      0.62     17205
+Clearly, the high-risk precision is not accurate in the slightest clocking in at 3% accurate while the low-risk precision is 100% accurate.
+After this, I went onto the next portion of the notebook with Easy Ensemble AdaBoost Classifier "compare two ensemble algorithms to determine which algorithm results in the best performance."After naming my next model eec_MODEL, I was able to fit (X_train, y_train) into it. My balanced accuracy score came out to 0.9316600714093861 or roughly ~ .93. In calculating Precision (Precision = TP/(TP + FP)), the TP was 93 and FP was 983 and when calculated: Precision = 93/(93 + 983)=0.09 for high-risk and 1.00 according to the chart I have included below:
+                   pre       rec       spe        f1       geo       iba       sup
+
+  high_risk       0.09      0.92      0.94      0.16      0.93      0.87       101
+   low_risk       1.00      0.94      0.92      0.97      0.93      0.87     17104
+Clearly, the high-risk precision is not accurate in the slightest clocking in at 9% accurate while the low-risk precision is 100% accurate.
+avg / total       0.99      0.94      0.92      0.97      0.93      0.87     17205
+After this, I went onto the next portion of the notebook with Naive Random Oversampling "compare two ensemble algorithms to determine which algorithm results in the best performance." I imported (from imblearn.over_sampling import RandomOverSampler) the RandomOverSampler and named it ros and created a model called ros_MODEL. My balanced accuracy score came out to 0.6742571941946299 or roughly ~ .67. In calculating Precision (Precision = TP/(TP + FP)), the TP was 75 and FP was 6740 and when calculated: Precision = 75/(75 + 6740)=0.01 for high-risk and 1.00 according to the chart I have included below:
+                   pre       rec       spe        f1       geo       iba       sup
+
+  high_risk       0.01      0.74      0.61      0.02      0.67      0.46       101
+   low_risk       1.00      0.61      0.74      0.75      0.67      0.44     17104
+
+avg / total       0.99      0.61      0.74      0.75      0.67      0.44     17205
+Clearly, the high-risk precision is not accurate in the slightest clocking in at 1% accurate while the low-risk precision is 100% accurate.
+After this, I went onto the next portion of the notebook with SMOTE Oversampling "compare two ensemble algorithms to determine which algorithm results in the best performance." I imported (from imblearn.over_sampling import SMOTE) SMOTE and named it SMOTE and created a model called SMOTE_MODEL. My balanced accuracy score came out to 0.6623356588465208 or roughly ~ .66. In calculating Precision (Precision = TP/(TP + FP)), the TP was 64 and FP was 5285 and when calculated: Precision = 64/(64 + 5285)=0.01 for high-risk and 1.00 according to the chart I have included below:
+                  pre       rec       spe        f1       geo       iba       sup
+
+  high_risk       0.01      0.63      0.69      0.02      0.66      0.44       101
+   low_risk       1.00      0.69      0.63      0.82      0.66      0.44     17104
+
+avg / total       0.99      0.69      0.63      0.81      0.66      0.44     17205
+Clearly, the high-risk precision is not accurate in the slightest clocking in at 1% accurate while the low-risk precision is 100% accurate.
+After this, I went onto the next portion of the notebook with Undersampling "compare two ensemble algorithms to determine which algorithm results in the best performance." I imported (from imblearn.under_sampling import ClusterCentroids)  and named it cc and created a model called cc_MODEL. My balanced accuracy score came out to 0.5443043836656818 or roughly ~ .54. In calculating Precision (Precision = TP/(TP + FP)), the TP was 68 and FP was 10000 and when calculated: Precision = 68/(68 + 10000)=0.01 for high-risk and 1.00 according to the chart I have included below:
+                   pre       rec       spe        f1       geo       iba       sup
+
+  high_risk       0.01      0.67      0.42      0.01      0.53      0.29       101
+   low_risk       1.00      0.42      0.67      0.59      0.53      0.27     17104
+
+avg / total       0.99      0.42      0.67      0.58      0.53      0.27     17205
+Clearly, the high-risk precision is not accurate in the slightest clocking in at 1% accurate while the low-risk precision is 100% accurate.
+After this, I went onto the next portion of the notebook with Combination (Over and Under) Sampling "compare two ensemble algorithms to determine which algorithm results in the best performance." I imported (from imblearn.combine import SMOTEENN)  and named it smtn and created a model called smtn_MODEL. My balanced accuracy score came out to 0.6615015073771175 or roughly ~ .66. In calculating Precision (Precision = TP/(TP + FP)), the TP was 74 and FP was 7007 and when calculated: Precision = 74/(74 + 7007)=0.01 for high-risk and 1.00 according to the chart I have included below:
+                 pre       rec       spe        f1       geo       iba       sup
+
+  high_risk       0.01      0.73      0.59      0.02      0.66      0.44       101
+   low_risk       1.00      0.59      0.73      0.74      0.66      0.43     17104
+
+avg / total       0.99      0.59      0.73      0.74      0.66      0.43     17205
+Clearly, the high-risk precision is not accurate in the slightest clocking in at 1% accurate while the low-risk precision is 100% accurate.
+
+The model I believe to be the most efficient and precise would be the Easy Ensemble AdaBoost Classifier or eec_MODEL. This is due to the high-risk precision being higher than the others at 9% while the others dont go north of 3%. This model was also the easiest to implement because of the fact it is a "weak learner" but is easiest to use to get a reading on whether or not to go forward with a certain degree of credit-risk.
